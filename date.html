@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Date</title>
+    </head>
+    <body>
+        <script>
+            // UTC - Universal Time Coordinated
+            // UTC = GMT
+            // GMT - Greenwich Mean Time
+            // Hora Brasil - Hora GMT - 3h
+            // 1970-01-01 00:00:00 data zero no JavaScript
+            var d1 = new Date();
+            // milisegundos - milésimo de segundo, milésima parte de um segundo.
+            var d2 = new Date(123456); // a contagem de milisegundos é feita a partir de 1970-01-01 00:00:00
+            console.log(d1);
+            var d3 = new Date("Jul/04/2018 08:00:00");
+            console.log(d3);
+            var d4 = new Date(2018, 6, 4, 8, 0, 0);
+            console.log(d4);
+            var dataLocal = new Date();
+            var dataUniversal = new Date(); // UTC (GMT)
+            console.log( dataLocal.getHours() );
+            console.log( dataUniversal.getUTCHours() );
+            // Retornando o dia do mês (de 1 a 31)
+            console.log( dataLocal.getDate() );
+            // Retorna o dia da semana (0 a 6)
+            console.log( dataLocal.getDay() );
+            var diaSemana = [
+                "domingo", "segunda", "terça-feira", 
+                "quarta-feira", "quinta-feira", "sexta-feira", "sábado"
+            ];
+            console.log( diaSemana[dataLocal.getDay()] );
+            // Retorna o mês
+            console.log( dataLocal.getMonth() );
+            var meses = [
+                "janeiro", "fevereiro", "março",
+                "abril", "maio", "junho",
+                "julho", "agosto", "setembro",
+                "outubro", "novembro", "dezembro"
+            ];
+            console.log( meses[dataLocal.getMonth()] );
+            // Retorna o ano com quatro digitos
+            console.log( dataLocal.getFullYear() );
+            // Retorna o ano com dois digitos.
+            // ano atual - 1900
+            console.log( dataLocal.getYear() );
+            // Retorna as horas da data
+            console.log( dataLocal.getHours() );
+            // Retorna os minutos da data
+            console.log( dataLocal.getMinutes() );
+            // Retorna a quantidade de segundos da data
+            console.log( dataLocal.getSeconds() );
+            // Retorna a quantidade de milisegundos
+            console.log( dataLocal.getMilliseconds() );
+            // Retorna a quantidade total de milisegundos correspondentes a data
+            // tendo por referência 01/01/1970 00:00:00
+            console.log( dataLocal.getTime() );
+            // Diferença em minutos da hora local para a hora universal (UTC/GMT)
+            console.log( dataLocal.getTimezoneOffset() );
+            console.log( Date.parse(dataLocal) ); // equivale a (new Date()).getTime()
+            console.log(dataLocal);
+            console.log( dataLocal.toDateString() ); // formato internacional
+            console.log( dataLocal.toLocaleDateString() ); // formato local
+        </script>
+    </body>
+</html>

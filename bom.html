@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>BOM (Browser Object Model)</title>
+    </head>
+    <body>
+        <div id="now"></div>
+        <script>
+            window.onload = function() {
+                // BOM - window object
+                // window.alert("oi");
+                // window.confirm("Você quer ir para Porto Seguro?");
+                // window.prompt("Qual a tecnologia que você mais gosta?");
+                // Criando janela personalizada (janela popup) com window.open().
+                // param1: url
+                // param2: window title
+                // param3
+                // window (janela do browser)
+                var janela = window.open("array.html", "xti", "width=300,height=500,toobar=no,location=no");
+                janela.resizeTo(300, 300);
+                janela.moveTo(500, 500);
+                janela.onload = function() {
+                    // document (documento HTML)
+                    this.document.body.innerHTML = "<h1>BOM - window object</h1>";
+                };
+
+                // navigator (navegador)
+                console.log(window.navigator.platform);
+                console.log(window.navigator.userAgent);
+                console.log(window.navigator.language);
+                console.log(window.navigator.plugins);
+
+                // location (barra de endereços da janela)
+                console.log(window.location.href);
+                console.log(window.location.protocol);
+
+                // screen (dimensões da janela)
+                console.log(window.screen.width);
+                console.log(window.screen.height);
+
+                // history (histórico de navegação do browser)
+                console.log(window.history.length); // total de URLs acessadas.
+                // history.back(); // botão voltar (página anterior)
+                // history.forward(); // botão avançar (próxima página)
+                // history.go(-2); // volta duas páginas
+                // history.go(2); // avança duas páginas
+
+                // Temporizadores
+                // 1. Temporizadores que executam uma vez.
+                // 2. Temporizadores que executam mais de uma vez.
+                var temporizador1 = window.setTimeout(function() {
+                    var now = new Date();
+                    console.log(now);
+                }, 3000);
+
+                window.clearTimeout(temporizador1);
+
+                var temporizador2 = window.setInterval(function() {
+                    var now = document.getElementById("now");
+                    var date = new Date();
+                    now.innerHTML = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+                }, 1000);
+
+                //window.clearInterval(temporizador2);
+            };
+        </script>
+    </body>
+</html>

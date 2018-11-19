@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Number</title>
+    </head>
+    <body>
+        <script>
+            var n1 = 120;
+            var n2 = 120.55;
+            var n3 = new Number(150);
+            var n4 = new Number(150.50);
+            var n5 = new Number("150.50");
+            var n = new Number("120.35123");
+            console.log(Number.MAX_VALUE);
+            console.log(Number.MIN_VALUE);
+            console.log(NaN);
+            console.log(Number.NEGATIVE_INFINITY);
+            console.log(Number.POSITIVE_INFINITY);
+            console.log("n = " + n);
+            // O método toFixed() atua nas casas decimais do número.
+            console.log("n.toFixed() = " + n.toFixed());
+            console.log("n.toFixed(6) = " + n.toFixed(6));
+            // O método toPrecision() retorna o número com a quantidade de digitos informada por parâmetro.
+            console.log("n.toPrecision() = " + n.toPrecision());
+            console.log("n.toPrecision(1) = " + n.toPrecision(1));
+            console.log("n.toPrecision(3) = " + n.toPrecision(3));
+            console.log("n.toPrecision(5) = " + n.toPrecision(5));
+            console.log("n.toPrecision(8) = " + n.toPrecision(8));
+            // O método toExponential() converte um número para notação científica.
+            // Parâmetro opcional porém se informado deve estar no intervalo númerico entre 0 e 20.
+            console.log("n.toExponential() = " + n.toExponential());
+            console.log("n.toExponential(3) = " + n.toExponential(3));
+        </script>
+    </body>
+</html>

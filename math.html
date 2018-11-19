@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Math</title>
+    </head>
+    <body>
+        <script>
+            // Math não possui construtor.
+            // É uma classe utilitária contendo atributos e métodos estáticos.
+            // 1. Comprimento de uma circunferência            
+            // C = 2 * PI * raio
+            var raio = 30;
+            var comprimentoCircunferencia = 2 * Math.PI * raio;
+            console.log(comprimentoCircunferencia);
+            // Math.abs() - retorna o valor absoluto de um número
+            console.log( Math.abs(-3) );
+            console.log( Math.abs(3) );
+            console.log( Math.abs(3.5) );
+            // Math.max() - retorna o maior número de um conjunto numérico
+            console.log( Math.max(-3, 3, 5, 9, 1000) );
+            // Math.min() - retorna o menor número de um conjunto numérico
+            console.log( Math.min(-3, 3, 5, 9, 1000) );
+            // Math.round() - arredonda um número para o inteiro mais próximo.
+            console.log(Math.round(3.4) );
+            console.log(Math.round(3.5) );
+            // Math.floor() - arredonda para baixo (o menor inteiro mais próximo)
+            console.log( Math.floor(3.9) );
+            // Math.ceil() - arredona para cima (o maior inteiro mais próximo)
+            console.log( Math.ceil(3.1) );
+            // Math.pow - cálculo exponencial
+            console.log( Math.pow(2, 3) );
+            // Math.sqrt() - calcula a raiz quadrada de um número
+            console.log( Math.sqrt(4) );
+            // Math.random() - retorna um número randômico (aleatório)
+            // Gera números entre 0 a 1 // [0, 1[
+            var randNum = Math.random();
+            console.log(randNum);
+            randNum = Math.floor(randNum * 10);
+            console.log(randNum);
+            randNum = Math.floor(Math.random() * 10) + 1;
+            console.log(randNum);
+            console.log( 'Seno de 3: ' + Math.sin(3) );
+            console.log( 'Coseno de 3: ' + Math.cos(3) );
+        </script>
+    </body>
+</html>

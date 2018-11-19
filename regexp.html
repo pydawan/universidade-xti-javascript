@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>RegExp</title>
+    </head>
+    <body>
+        <h3>Expressões Regulares</h3>
+        <form id="formulario">
+            <fieldset>
+                <legend>Validação e Formatação</legend>
+                <label for="cpf">CPF:</label>
+                <input name="cpf" type="text">
+
+                <label for="email">E-mail:</label>
+                <input name="email" type="text">
+
+                <a href="#" onclick="validar()">Validar</a>
+            </fieldset>
+        </form>
+        <script>
+            // RegExp (regex, re) - Regular Expressions (Expressões Regulares)
+            // 1. Utilizadas para buscas ou substituições textuais
+            // 2. Independem de linguagem de programação
+            var regex = new RegExp("JavaScript"); // objeto
+            var re = /JavaScript/; // literal
+            var string = "JavaScript";
+            // test(): retorna um booleano informando se o padrão ocorreu ou não.
+            console.log( regex.test(string) );
+            regex = new RegExp("JavaScript", "i"); // modificador i (case insensitive matching)
+            re = /javascript/i;
+            var str = "Qual é o Doce mais doce que o doce?";
+            // exec(): retorna a primeira ocorrência encontrada de um padrão.
+            console.log( /doce/i.exec(str) );
+            // modificador g (global) verifica do início ao fim.
+            console.log( str.match(/doce/ig) );
+
+            // Metacaracteres (metachars)
+            // . encontra qualquer caractere exceto newline
+            // \w
+            // \s espaços em branco
+            // \d dígitos [0-9]
+            // ^ início do texto
+            // $ fim do texto
+
+            // modificadores, metacaracteres, quantificadores
+            // Quantificadores: * (zero ou mais ocorrências), + (uma ou mais ocorrências), ? (zero ou uma ocorrência), {n} (n ocorrências), {x,y} (no mínimo x e no máximo y ocorrências)
+
+            // Buscas e substituições
+            // Busca
+            console.log( str.match(/doce/ig) );
+            // Substituição
+            console.log( str.replace(/doce/ig, 'docinho') );
+
+            // $1 referencia grupo 1
+            // $2 referencia grupo 2
+            // () cria um grupo
+
+            function validar() {
+                var formulario = document.getElementById('formulario');
+                var cpf = formulario.cpf;
+                var email =formulario.email;
+                var regexCPF = /^(\d{3})(\d{3})(\d{3})(\d{2})$/;
+                var regexEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                if ( regexCPF.test(cpf.value) ) {
+                    console.log("CPF válido!");
+                    cpf.value = cpf.value.replace(regexCPF, "$1.$2.$3.-$4");
+                } else {
+                    console.log("CPF inválido!");
+                    console.log("O CPF deve conter apenas números, sem ponto ou traço!")
+                }
+                if ( !regexEmail.test(email.value) ) {
+                    console.log("E-mail inválido!");
+                } else {
+                    console.log("E-mail válido!");
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Error</title>
+    </head>
+    <body>
+        <script>
+            /*
+             * Tratamento de exceções no JavaScript:
+
+             * Objeto Error
+             *  . message
+             *  . name
+             *  . toString()
+             *
+             *  EvalError - não é mais lançada pelo JavaScript mas existe por razões de compatibilidade.
+             *  RangeError
+             *  ReferenceError
+             *  SyntaxError
+             *  TypeError
+             *  URIError
+             */
+            try {
+                //eval('alert(');
+                var numero = window.prompt('Informe um número maior que 10: ');
+                if (numero < 10) {
+                    //throw 'Erro: você digitou um número menor que 10!';
+                    throw new Error('O número informado é menor que 10!');
+                }
+            } catch (error) {
+                console.log(error.toString());
+                console.log(error);
+                console.log(error.name + ' => ' + error.message);
+                alert(error);
+            } finally {
+                console.log('Palmeiras Campeão Brasileiro 2018!');
+            }
+        </script>
+    </body>
+</html>

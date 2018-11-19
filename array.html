@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Array</title>
+    </head>
+    <body>
+        <script>
+            /* Array é uma estrutura de dados
+             * que permite armazenar vários elementos (de vários tipos de dados
+             * diferentes entre si) de forma indexada.
+             */
+            // Arrays Indexados
+            var a = new Array();
+            var paises = new Array("Brasil", "Rússia", "Índia", "China", "Brasil");
+            console.log(paises);
+            console.log( paises[0] );
+            console.log( paises.length );
+            for (var i = 0; i < paises.length; i++) {
+                console.log( paises[i] );
+            }
+            console.log( paises.indexOf("Brasil") );
+            console.log( paises.lastIndexOf("Brasil") );
+            // JavaScript só possui três tipos de dados primitivos: string, boolean e number.
+            // Todo o resto são objetos.
+            // Todos objetos em JavaScript são tratados como arrays.
+            for (var i = 0; i < paises.length; i++) {
+                for (var j = 0; j < paises[i].length; j++) {
+                    console.log(paises[i][j]);
+                }
+            }
+            paises[5] = 'Alemanha';
+            // inverte os elementos do array.
+            console.log( paises.reverse() );
+            // ordena os elementos do array alfabeticamente.
+            console.log( paises.sort() );
+            // alterar o separador de elementos do array.
+            console.log( paises.join(';') );
+            console.log( paises.concat("Estados Unidos da América", "Argentina") );
+            console.log( paises.slice(3) );
+            console.log( paises.slice(2, 3) );
+            var frutas = ["cupuaçú", "banana", "graviola", "açaí", "laranja"];
+            console.log(frutas);
+
+            // splice - altera os elementos do array (adiciona ou remove)
+            console.log( frutas.splice(2, 2, "abacate", "acerola", "umbu", "cupuaçú") );
+            console.log(frutas);
+            var pessoas = ["Thiago", "Polyany", "Lorenzo"];
+            console.log(pessoas);
+            // adicionando elementos no final do array
+            pessoas.push("Stella");
+            console.log(pessoas);
+            // removendo o último elemento do array.
+            pessoas.pop();
+            console.log(pessoas);
+            // removendo o primeiro elemento do array
+            pessoas.shift();
+            console.log(pessoas);
+            // adicionando elemento no início od array.
+            pessoas.unshift("Furão da fila");
+            console.log(pessoas);
+            // Array [] - vetores
+            // Arrays Multi-dimensionais [][] - matrizes
+            // Arrays associativos {} - dicionários ou mapas
+            // Funções: every, some, filter e map
+            // Arrays indexados (usam índices para acessar seus elementos)
+            pessoas = new Array();
+            pessoas[0] = new Array("Thiago Alexandre Martins Monteiro", "Goiânia")
+            console.log(pessoas[0]); 
+            console.log(pessoas[0][0] + ", " + pessoas[0][1]);
+            pessoas = [
+                ["Thiago Alexandre Martins Monteiro", "111.111.111-11"],
+                ["Polyany Roncolato Louly", "222.222.222-22"]
+            ];
+            console.log(pessoas);
+            // Arrays associativos (usam chaves para acessar seu elementos)
+            var pessoa = {
+                nome: "Thiago Alexandre Martins Monteiro", 
+                cpf: "111.111.111.-11", 
+                cidade: "Goiânia"
+            };
+            function testTodosElementosString(elem, ind, obj) {
+                return (typeof elem == "string");
+            }
+            function testAlgumElementoNumber(elem, ind, obj) {
+                return (typeof elem == "number");
+            }
+            function testPossuiSequenciaAN(elem, ind, obj) {
+                return (elem.indexOf("an") >= 0);
+            }
+            function prefixarComFruta(elem, ind, obj) {
+                return (elem = "fruta: " + elem);
+            }
+            frutas.push(12345);
+            // every (plural ou coletivo): todos elementos satisfazem a condição estabelecida?
+            console.log(frutas.every(testTodosElementosString));
+            // some (singular ou indivisual): algum elemento satisfaz a condição estabelecida?
+            console.log(frutas.some(testAlgumElementoNumber));
+            // filter: com base em uma coleção inicial, retorna uma nova coleção com elementos que satisfaçam uma condição estabelecida.
+            frutas = ["abacate", "banana", "caju", "maça", "pêra", "uva"];
+            console.log(frutas.filter(testPossuiSequenciaAN));
+            // map: com base em uma coleção inicial, retorna uma nova coleção com todos os elementos da coleção inicial.
+            console.log(frutas.map(prefixarComFruta));
+        </script>
+    </body>
+</html>

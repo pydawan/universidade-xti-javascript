@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Events</title>
+    </head>
+    <body>
+        <!-- HTML API -->
+        <!-- HTML event binding -->
+        <input type="button" id="button1" name="button1" value="Button 1" onclick="console.log('Button 1 was pressed!');">
+        <!-- DOM0 event binding -->
+        <input type="button" id="button2" name="button2" value="Button 2">
+        <!-- DOM2 event binding -->
+        <input type="button" id="button3" name="button3" value="Button 3">
+        <input type="button" id="button4" name="button4" value="Button 4">
+        <div id="primeira">
+            <a id="botao" href="#">Botão</a>
+        </div>
+        <script>
+            // 1. Event
+            // 2. Event trigger (observable object)
+            // 2.1 Default Event Trigger
+            // 2.2 Changing default event trigger
+            // 3. Event handler (observer object)
+            
+            // return false em nosso event trigger cancela a chamada ao manipulador de evento padrão do browser.
+            window.onload = function() {
+                // API DOM0 - event binding
+                var button2 = document.getElementById("button2");
+                // binding event handler with event trigger.
+                button2.onclick = function() {
+                    console.log("Button 2 was pressed!");
+                };
+                // unbinding event handler of event trigger.
+                //button2.onclick = null;
+
+                // Event Trigger: <input type="button">
+                // Event: click
+                // Event Handler: onclick
+
+                // API DOM2
+                // Vantagens
+                // 1. Baseado em uma especificação moderna
+                // 2. Permite criar novos eventos
+                // 3. Permite atrelar mais de um manipulador para o mesmo evento facilmente.
+                var button3 = document.getElementById("button3");
+                var clickListener = function() {
+                    console.log("Button 3 was pressed!");
+                };
+                // false for event propagation (event bubbling)
+                button3.addEventListener("click", clickListener, false);
+                //button3.addEventListener("click", firstListener, false);
+                //button3.addEventListener("click", secondListener, false);
+                //button3.removeEventListener("click", clickListener);
+
+                // Objeto Event
+                // 1. Propriedades (comuns entre quase todos os browsers).
+                // 2. Forma de acesso ao objeto event é diferente entre os navegadores.
+                var button4 = document.getElementById("button4");
+                button4.onclick = function(event) {
+                    // 1. No Firefox, Google Chrome, Safari etc o objeto Event é passado
+                    // como argumento na função.
+                    // console.log(event.type);
+                    // 2. Forma de acessar o objeto Event no IE (Internet Explorer).
+                    // console.log(window.event.type);
+
+                    // 3. Acessando o objeto Event em qualquer browser.
+                    var _event = event ? event : window.event;
+                    console.log(_event.type);
+                    console.log( "Coordenadas do mouse: ".concat("(x = ", _event.screenX, ",", "y = ", _event.screenY, ")") );
+                };
+
+                // Event Bubbling (Propagação de Eventos)
+                // 1. O JavaScript propaga os eventos do elemento mais interno
+                // para os elementos mais externos na hierarquia de objetos.
+                var botao = document.getElementById("botao");
+                var div = document.getElementById("primeira");
+                botao.onclick = function(event) {
+                    console.log("botão");
+                    var evt = event ? event : window.event;
+                    if (evt.stopPropagation) {
+                        evt.stopPropagation();
+                    } else {
+                        evt.cancelBubble = true;
+                    }
+                };
+                div.onclick = function() {
+                    console.log("div");
+                };
+                document.onclick = function() {
+                    console.log("document");
+                };
+            };
+        </script>
+    </body>
+</html>

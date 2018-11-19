@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Function</title>
+    </head>
+    <body>
+        <script>
+            // 1. Função declarativa
+            function somar1(x, y) {
+                var soma = x + y;
+                console.log(soma);
+                return soma;
+            }
+
+            // 2. Função anônima
+            var somar2 = new Function("x", "y", "var soma = x + y; console.log(soma); return soma;");
+
+            // 3. Função literal
+            var somar3 = function(x, y) {
+                var soma = x + y;
+                console.log(soma);
+                return soma;
+            };
+
+            // Funções de callback
+            
+        </script>
+    </body>
+</html>

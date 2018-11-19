@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>String</title>
+    </head>
+    <body>
+        <script>
+            var x = "texto dentro de aspas.";
+            var y = new String("texto dentro de aspas.");
+            var z = new String("texto dentro de texto.");
+            document.writeln(x.length);
+            document.writeln("<br>");
+            document.writeln(x.charAt(2));
+            document.writeln("<br>");
+            document.writeln(x.charCodeAt(2)); // retorna código Unicode do caractere.
+            document.writeln("<br>");
+            document.writeln("Thiago Alexandre".concat(" ").concat("Martins Monteiro"));
+            document.writeln("<br>");
+            document.writeln(String.fromCharCode(120));
+            document.writeln("<br>");
+            document.writeln(z.indexOf("texto"));
+            document.writeln("<br>");
+            document.writeln(z.lastIndexOf("texto"));
+            document.writeln("<br>");
+            document.writeln(z.match(/[a-e]/));
+            document.writeln("<br>");
+            document.writeln(z.match(/[a-e]/g));
+            document.writeln("<br>");
+            document.writeln(z.replace("texto", ""));
+            document.writeln("<br>");
+            document.writeln(z.replace(/texto/g, ""));
+            document.writeln("<br>");
+            document.writeln(z.substring(5, 8)); // retorna o intervalo textual entre dois índices (inicial e final).
+            document.writeln("<br>");
+            document.writeln(z.substr(5, 8)); // retorna um pedaço do texto de uma posição inicial com comprimento especificado.
+            document.writeln("<br>");
+            document.writeln(z.split(" ")[0]);
+        </script>
+    </body>
+</html>

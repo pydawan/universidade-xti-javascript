@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="js/cookie.js"></script>
+        <title>Cookies</title>
+    </head>
+    <body>
+        <script>
+            window.onload = function() {
+                var nome = readCookie("nome");
+                if (nome == null) {
+                    nome = this.prompt("Qual é o seu nome?");
+                    writeCookie("nome", nome, 1);
+                }
+            };
+        </script>
+    </body>
+</html>

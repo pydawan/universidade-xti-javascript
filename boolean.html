@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Boolean</title>
+    </head>
+    <body>
+        <script>
+            var bool = true;
+            var boolean = new Boolean(true);
+            console.log( 'true is ' + typeof(bool) );
+            console.log( 'new Boolean(true) is ' + typeof(boolean) );
+            console.log( 'Is true instanceof Boolean? ' + (bool instanceof Boolean) );
+            console.log( 'Is new Boolean(true) instanceof Boolean? ' + (boolean instanceof Boolean) );
+            console.log( new Boolean() );
+            console.log( new Boolean(true) );
+            console.log( new Boolean(0) );
+            console.log( new Boolean(1) );
+            console.log( new Boolean("true") );
+            console.log( new Boolean("false") );
+            console.log( new Boolean("") );
+            console.log( new Boolean(NaN) );
+            console.log( new Boolean(null) );
+            console.log( new Boolean(undefined) );
+            console.log( new Boolean([]) );
+            console.log( new Boolean({}) );
+            /*
+             * Zero, null, NaN e string vazia são inerentemente false;
+             * todo o resto é inerentemente true.
+             */
+             console.log( new Boolean(true) ); // retorna objeto Boolean.
+             console.log( new Boolean(true).valueOf() ); // retorno o tipo primitivo.
+             console.log( new Boolean(true).toString() ); // retorna a representação textual do objeto.
+        </script>
+    </body>
+</html>
