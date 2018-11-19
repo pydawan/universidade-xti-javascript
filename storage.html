@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HTML5 DOM Storage API</title>
+</head>
+<body>
+    <marquee>
+        <h1>HTML5 DOM Storage API</h1>
+    </marquee>
+    <center>
+        <input type="text" id="entrada" name="entrada">
+        <br>
+        <br>
+        <input type="button" id="gravar" value="Gravar">
+        <input type="button" id="exibir" value="Exibir">
+        <br>
+        <br>
+        <textarea id="saida" name="saida" cols="50" rows="10" style="border:1px solid #ccc;"></textarea>
+    </center>
+    <script>
+        // HTML5 DOM Storage API is a new way to persist data in client side.
+        window.onload = function () {
+            var gravar = document.getElementById("gravar");
+            var exibir = document.getElementById("exibir");
+            var entrada = document.getElementById("entrada");
+            var saida = document.getElementById("saida");
+
+            gravar.onclick = function () {
+                window.localStorage.setItem("meuTexto", entrada.value);
+            };
+
+            exibir.onclick = function () {
+                saida.value = localStorage.getItem("meuTexto");
+            };
+        };
+    </script>
+</body>
+</html>
