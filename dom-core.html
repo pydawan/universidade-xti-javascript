@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>DOM CORE API</title>
+    </head>
+    <body>
+        <h2>Árvore</h2>
+        <div>
+            <ul>
+                <li id="Item 1">
+                    Primeiro
+                    <span style="color:blue;">Item</span>
+                    <ul>
+                        <li id="Item 1.1">Item 1.1</li>
+                        <li id="Item 1.2">Item 1.2</li>
+                        <li id="Item 1.3">
+                            Item 1.3
+                            <ul>
+                                <li id="Item 1.3.1">Item 1.3.1</li>    
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li id="Item 2">Item 2</li>
+                <li id="Item 3">Item 3</li>
+            </ul>
+        </div>
+        <script>
+            // 1. Árvore de elementos
+            // 2. Tipos de Nós:
+            //    Document (Documento), Element (Elemento), Attribute (Atributo), Text (Texto).
+            // 3. Nó raiz: elemento <html>
+            // 4. Parentesco dos nós:
+            //    Pai = parent, Filho = child, Irmão = sibling
+            var div = document.getElementsByTagName("div").item(0);
+            console.log(div); // elemento
+            console.log(div.parentNode); // pai
+            console.log(div.childNodes); // filhos
+            var ul = div.childNodes.item(0);
+            console.log(ul); // primeiro filho de div
+            console.log(ul.nodeName);
+            console.log(ul.nodeType); // 1=Elemento, 2=Atributo, 3=Texto
+            console.log(ul.childNodes.length);
+            console.log(ul.firstChild); // primeio filho do elemento
+            console.log(ul.lastChild); // último filho do elemento
+            // nodeValue só traz valor em elementos do tipo: Atributo ou Texto.
+            console.log(ul.firstChild.firstChild.nodeValue);
+            var li = ul.firstChild.lastChild.childNodes[1];
+            console.log(li.previousSibling.firstChild.nodeValue);
+            console.log(li.nextSibling.firstChild.nodeValue);
+
+            // 1. Criação de nós na árvore DOM (DOM Tree)
+            // 1.1 createElement
+            // 1.2 createTextNode
+            // 1.3 createAttribute
+
+            // 2. Atribuição de nós
+            // 2.1 appendChild
+            // 2.2 removeChild
+            // 2.3 replaceChild
+            var hr = document.createElement("hr"); // o elemento é uma tag HTML.
+            div.appendChild(hr);
+
+            var li = document.createElement("li");
+            li.appendChild(document.createTextNode("Teste de Lista"));
+            div.firstChild.appendChild(li);
+
+            var atributo = document.createAttribute("style");
+            atributo.value = "color:blue";
+            li.setAttributeNode(atributo);
+            li.setAttribute("style", "color:blue");
+            li.style.color = "blue"; // HTML DOM API
+            
+            var select = document.createElement("select");
+            select.setAttribute("id", "estados");
+            var option = document.createElement("option");
+            option.setAttribute("value", "DF");
+            option.appendChild(document.createTextNode("Distrito Federal"));
+            select.appendChild(option);
+            div.appendChild(select);
+
+            var del = div.firstChild;
+            div.removeChild(del);
+
+            // É possível clonar (copiar) nós.
+            
+            // clonando um elemento
+            // Deep copy or shallow copy
+            var select2 = select.cloneNode(true); // true para clonar os elementos filhos também
+
+        </script>
+    </body>
+</html>
