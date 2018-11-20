@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>DOM API</title>
+    </head>
+    <body>
+        <h2 id="tit_id" name="tit_name" class="tit_class">DOM API</h2>
+        <script>
+            // DOM HTML/Core API
+
+            /* DOM HTML simplifica a manipulação de documentos html
+             * porém não é tão genérica quanto a DOM Core que permite
+             * a manipulação de documentos XML.
+             */
+
+            /* Localizar elementos: 
+             * By: Id, Name, Class, Tag, Selector
+            */
+            window.onload = function() {
+                var tit = document.getElementById("tit_id");
+                tit.style.color = "green"; // DOM HTML API
+                tit.setAttribute("style", "color:green"); // DOM Core API
+                console.log(tit);
+                tit = document.getElementsByName("tit_name");
+                console.log(tit[0]);
+                tit = document.getElementsByClassName("tit_class");
+                console.log(tit[0]);
+                tit = document.getElementsByTagName("h2");
+                console.log(tit[0]);
+                tit = document.querySelector("#tit_id");
+                console.log(tit[0]);
+                tit = document.querySelectorAll(".tit_class");
+            };
+        </script>
+    </body>
+</html>
