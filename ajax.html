@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>AJAX</title>
+    </head>
+    <body>
+        <script>
+            /*
+             * 1. AJAX - Asynchronous JavaScript and XML
+             * 2. Objeto XMLHttpRequest
+             * 3. Acesso e carregamento de conteúdo
+             * 4. Evita que seja necessário o recarregamento de todo documento (página) HTML.
+             * 5. Assíncrono
+             * 5.1 Ao contrário do carregamento sincrono que bloqueia a interação do usuário com a página
+             *     até que o ciclo request/response seja concluído, o carregamento assíncrono não faz o bloqueio
+             *     da página graças a eventos e manipuladores desses eventos no carregamento do conteúdo.
+             */
+             var ajax = new XMLHttpRequest();
+             ajax.onreadystatechange = function() { // informa quando o processamento da response muda.
+                // readyState - status da response do server
+                //    possui 5 valores diferentes
+                //    0 - comunicação com o server não iniciada
+                //    1 - comunicação iniciada entre o client e o server
+                //    2 - início de requisição ao servidor (request feita)
+                //    3 - server processando a request
+                //    4 - server enviou uma response
+                ajax.readyState
+                if (ajax.readyState == 4) {
+                    console.log("Resposta chegou!");
+                }
+                // acessando um recurso (resource) no servidor (server)
+                // método open()
+                // 1. primeiro parâmetro o método HTTP
+                // 2. segundo parâmetro a URL
+                // 3. terceiro parâmetro modo assíncrono (true) ou sincrono (false)
+                // 4. quarto parâmetro usuário e senha para conexão segura.
+                ajax.open("POST", "ajax/arquivo.txt");
+                // 1. send() faz a requisição para o servidor - readyState 2
+                // 2. recebe parâmetros: param1=1&param2=2
+                // 3. sem parâmetros: send() ou send(null)
+                ajax.send();
+
+                // status - código do status HTTP
+                // statusText - texto do status HTTP
+                // responseText - retorna a response como texto puro (plain text)
+                // responseXML - retorna a response como um documento XML
+
+                // AJAX Cross Browser
+                var xhr = new XMLHttpRequest(); // Firefox, Google Chrome, Opera, Safari
+                xhr = new ActiveXObject("Microsoft.XMLHTTP"); // Internet Explorer
+
+                function iniciaAjax() {
+                    var ajax = null;
+                    if (window.XMLHttpRequest) {
+                        ajax = new XMLHttpRequest();
+                    } else if (window.ActiveXObject) {
+                        try {
+                            ajax = new ActiveXObject("Msxml2.XMLHTTP"); // objeto mais novo.
+                        } catch(e) {
+                            ajax = new ActiveXObject("Microsoft.XMLHTTP"); // objeto mais antigo
+                        }
+                    }
+                    return ajax;
+                }
+             };
+        </script>
+    </body>
