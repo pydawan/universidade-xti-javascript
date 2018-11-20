@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>DOM HTML API</title>
+    </head>
+    <body>
+        <script>
+            // DOM HTML API é uma extensão da DOM CORE API
+            // DOM HTML API permite acesso mais rápido do que a DOM CORE API 
+            // a elementos do documento html.
+            console.log(document); // HTMLDocument object
+            console.log(document.title);
+            // HTMLCollection object
+            console.log(document.images);
+            var img = document.images;
+            for (var i = 0; i < img.length; i++) {
+                console.log(img[i]);
+            }
+            console.log(img[0]);
+            console.log(img.item(0));
+            // HTMLImageElement object
+            console.log(img.namedItem("selecionada")); // busca pelo id.
+            console.log(document.links);
+            console.log(document.forms); // HTMLFormElement object.
+
+            // Alterar elementos
+            // primera tabela declarada no documento.
+            var tb = document.getElementsByTagName("table").item(0);
+            console.log(tb);
+            var row = tb.insertRow(-1); // cria uma linha no fim.
+            // tb.deleteRow(1);
+            var cel0 = row.insertCell(0);
+            var cel1 = row.insertCell(1);
+            cel0.appendChild( document.createTextNode("texto um") );
+            cel1.appendChild( document.creteTextNode("texto dois") );
+
+            document.forms[0].elements;
+            // HTMLSelectElement
+            document.forms[0].elements.estado[1].value;
+        </script>
+    </body>
+</html>
